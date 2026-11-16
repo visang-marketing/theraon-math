@@ -1,0 +1,16 @@
+# 더 라온수학교습소 — 검색엔진·AI 답변엔진 모두 허용
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Yeti
+Allow: /
+
+Sitemap: https://visang-marketing.github.io/theraon-math/sitemap.xml

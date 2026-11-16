@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>더 라온수학교습소 공부자료</title>
+<link>https://visang-marketing.github.io/theraon-math/articles/</link>
+<description>부산 동래구 온천동 초3~중3 학부모를 위한 학교별 시험 정보, 수학 공부자료, 동래 교육 소식</description>
+<language>ko</language>
+<atom:link href="https://visang-marketing.github.io/theraon-math/feed.xml" rel="self" type="application/rss+xml"/>
+<item><title>유락여중·내성중·동래중 수학 평가계획, 학교알리미에서 확인하는 법</title><link>https://visang-marketing.github.io/theraon-math/articles/school/school-math-evaluation-plan/</link><guid isPermaLink="true">https://visang-marketing.github.io/theraon-math/articles/school/school-math-evaluation-plan/</guid><pubDate>Sun, 15 Nov 2026 00:00:00 GMT</pubDate><category>학교별</category><description>우리 아이 학교 수학 시험에서 서술형이 몇 퍼센트인지, 수행평가는 언제 무엇을 보는지는 학교가 공개하는 평가계획에 나와 있습니다. 학교알리미에서 찾는 순서와 수학에서 꼭 볼 항목을 정리했습니다.</description></item>
+<item><title>중1 일차방정식, 알면서 틀리는 자리 4곳</title><link>https://visang-marketing.github.io/theraon-math/articles/study/middle1-linear-equation-mistakes/</link><guid isPermaLink="true">https://visang-marketing.github.io/theraon-math/articles/study/middle1-linear-equation-mistakes/</guid><pubDate>Sun, 15 Nov 2026 00:00:00 GMT</pubDate><category>수학 공부자료</category><description>중1 일차방정식에서 &quot;아는 건데 틀렸어요&quot;가 나오는 자리는 정해져 있습니다. 이항, 괄호, 분수 계수, 활용 문제 네 곳을 예시 풀이와 함께 정리하고 집에서 확인하는 방법을 알려 드립니다.</description></item>
+<item><title>지금 중학생은 어떤 입시를 보나요? 2028 대입 개편과 수학</title><link>https://visang-marketing.github.io/theraon-math/articles/news/college-admission-2028-middle-school-math/</link><guid isPermaLink="true">https://visang-marketing.github.io/theraon-math/articles/news/college-admission-2028-middle-school-math/</guid><pubDate>Sun, 15 Nov 2026 00:00:00 GMT</pubDate><category>동래 교육 소식</category><description>지금 중1~중3과 초6이 고3이 되는 해의 대입은 어떻게 바뀌었고, 무엇이 아직 논의 중인지 정리했습니다. 수능 수학 범위, 고교 내신 5등급, 다음 개편 논의까지 동래 학부모가 알아야 할 것만 담았습니다.</description></item>
+</channel>
+</rss>
