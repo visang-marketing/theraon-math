@@ -1085,6 +1085,15 @@ html.js:not(.fonts-ok) :is(.sheet, .mini-sheet, .board) .hand { visibility: hidd
   .x--pen { right: 14px; top: 84px; width: 42px; height: 42px; }
 }
 
+/* ==========================================================================
+   14차: 3D 카드 (scene3d.js) — 3D가 켜지면 2D 그림을 숨김, 안 되면 2D 그대로
+   ========================================================================== */
+canvas.s3d { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; pointer-events: none; }
+.bank-card.is-3d .bank-card__vis > * { visibility: hidden; }
+.bank-card .bank-card__txt { z-index: 1; }
+.desk.is-3d .sheet--hero, .desk.is-3d .sticky { visibility: hidden; }
+.desk .memo { z-index: 1; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
   .js [data-up] { opacity: 1; transform: none; }

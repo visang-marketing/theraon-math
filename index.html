@@ -24,6 +24,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="articles.css">
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.min.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/" } }</script>
 <script>document.documentElement.classList.add('js')</script>
 
 <!-- AEO·GEO 구조화 데이터. 확인된 사실만. 주소·전화·교습비·등록번호는 확인 후 채운다. -->
@@ -155,7 +156,7 @@
     </div>
 
     <div class="m-intro__visual" data-up style="--d:.24s" aria-hidden="true">
-      <div class="desk">
+      <div class="desk" data-s3d="hero">
         <div class="sheet sheet--hero">
           <div class="sheet__top"><span>2학기 중간고사 · 수학</span><span>중1 ○반 ○번</span></div>
           <p class="sheet__q"><b>5.</b> 다음 식을 간단히 하시오.</p>
@@ -194,31 +195,31 @@
   </div>
   <div class="slider" data-slider>
     <div class="slider__track">
-      <article class="bank-card bank-card--dark">
+      <article data-s3d="ineq" class="bank-card bank-card--dark">
         <div class="bank-card__txt"><p class="label">시험지 받아 온 날</p><h3>"엄마, 이거<br>다 배운 건데…"</h3></div>
         <div class="bank-card__vis">
-          <div class="mini-sheet" data-mg><p>3. 일차방정식 <span class="nw">3<i>x</i> − 5 = 2<i>x</i> + 1</span>을 푸시오.</p><p class="hand mg-write" style="--t:.3s;--dur:.9s">3<i>x</i> − 2<i>x</i> = <span class="miss" style="--t:2s">1 − 5<svg class="draw" viewBox="0 0 160 80" preserveAspectRatio="none"><path pathLength="1" d="M120 14C90 2 30 4 14 24 0 44 30 70 80 70c46 0 74-16 66-38-5-14-26-22-52-24"/></svg></span></p><p class="hand mg-write" style="--t:1.35s;--dur:.5s">∴ <i>x</i> = −4</p><svg class="x x--pen" viewBox="0 0 40 40" aria-hidden="true"><path class="mg-x" pathLength="1" d="M9 9 31 31" style="--t:2.85s"/><path class="mg-x" pathLength="1" d="M31 9 9 31" style="--t:3.05s"/></svg></div>
+          <div class="mini-sheet" data-mg><p>4. 부등식 <span class="nw">−2<i>x</i> + 1 &gt; 7</span>을 푸시오.</p><p class="hand mg-write" style="--t:.3s;--dur:.9s">3<i>x</i> − 2<i>x</i> = <span class="miss" style="--t:2s">1 − 5<svg class="draw" viewBox="0 0 160 80" preserveAspectRatio="none"><path pathLength="1" d="M120 14C90 2 30 4 14 24 0 44 30 70 80 70c46 0 74-16 66-38-5-14-26-22-52-24"/></svg></span></p><p class="hand mg-write" style="--t:1.35s;--dur:.5s">∴ <i>x</i> = −4</p><svg class="x x--pen" viewBox="0 0 40 40" aria-hidden="true"><path class="mg-x" pathLength="1" d="M9 9 31 31" style="--t:2.85s"/><path class="mg-x" pathLength="1" d="M31 9 9 31" style="--t:3.05s"/></svg></div>
         </div>
       </article>
-      <article class="bank-card bank-card--gray">
+      <article data-s3d="chart" class="bank-card bank-card--gray">
         <div class="bank-card__txt"><p class="label">학원 다닌 지 1년</p><h3>진도는 나가는데<br>점수가 그대로예요</h3></div>
         <div class="bank-card__vis">
           <svg class="chart" viewBox="0 0 320 170" aria-hidden="true" data-mg><g class="chart__grid"><path d="M20 30h290M20 75h290M20 120h290"/></g><path class="chart__prog" pathLength="1" d="M30 118C110 104 200 64 290 24"/><text class="chart__tag chart__tag--prog mg-fade" x="300" y="16" style="--t:1.5s">진도</text><path class="chart__line" pathLength="1" d="M30 112 95 104 160 110 225 102 290 106"/><g class="chart__pts"><circle class="mg-pop" style="--t:.6s" cx="30" cy="112" r="6"/><circle class="mg-pop" style="--t:.9s" cx="95" cy="104" r="6"/><circle class="mg-pop" style="--t:1.2s" cx="160" cy="110" r="6"/><circle class="mg-pop" style="--t:1.5s" cx="225" cy="102" r="6"/><circle class="mg-pop" style="--t:1.8s" cx="290" cy="106" r="6"/></g><path class="chart__miss" pathLength="1" d="M300 96c-6-14-60-20-96-8-30 10-10 30 34 30 44 0 70-10 62-24-3-5-10-8-18-10"/><text class="chart__tag mg-fade" x="300" y="80" style="--t:2s">점수</text><g class="chart__x"><text x="30" y="158">1학기 중간</text><text x="160" y="158">기말</text><text x="290" y="158">2학기</text></g></svg>
         </div>
       </article>
-      <article class="bank-card bank-card--green">
+      <article data-s3d="essay" class="bank-card bank-card--green">
         <div class="bank-card__txt"><p class="label">서술형 채점 결과</p><h3>답은 맞았는데<br>서술형에서 깎여요</h3></div>
         <div class="bank-card__vis">
           <div class="mini-sheet mini-sheet--essay" data-mg><p class="essay-tag">서술형 2</p><p class="hand mg-write" style="--t:.3s;--dur:.7s">넓이 = 48 cm²</p><div class="essay-lines"><span class="mg-line" style="--t:1s"></span><span class="mg-line" style="--t:1.12s"></span><span class="mg-line" style="--t:1.24s"></span></div><span class="minus mg-stamp" style="--t:1.9s;--rot:-6deg">−3</span><p class="hand note-s mg-write" style="--t:2.45s;--dur:.65s">풀이 과정이 없음</p></div>
         </div>
       </article>
-      <article class="bank-card bank-card--light">
+      <article data-s3d="calc" class="bank-card bank-card--light">
         <div class="bank-card__txt"><p class="label">계산 문제</p><h3>알면서도<br>계산에서 자꾸 틀려요</h3></div>
         <div class="bank-card__vis">
           <div class="mini-sheet" data-mg><p>7. (−3)² − 2 × (−4)</p><p class="hand mg-write" style="--t:.3s;--dur:.6s">= 9 <span class="miss" style="--t:1.6s">− 8<svg class="draw" viewBox="0 0 160 80" preserveAspectRatio="none"><path pathLength="1" d="M120 14C90 2 30 4 14 24 0 44 30 70 80 70c46 0 74-16 66-38-5-14-26-22-52-24"/></svg></span></p><p class="hand mg-write" style="--t:1.05s;--dur:.4s">= 1</p><p class="hand note-s mg-write" style="--t:2.4s;--dur:.7s">암산으로 건너뜀</p></div>
         </div>
       </article>
-      <article class="bank-card bank-card--dark">
+      <article data-s3d="exams" class="bank-card bank-card--dark">
         <div class="bank-card__txt"><p class="label">초6 겨울방학</p><h3>중학교 첫 시험이<br>걱정돼요</h3></div>
         <div class="bank-card__vis">
           <div class="exam-stack" data-mg><div class="exam mg-rise" style="--t:.35s"><p class="exam__h">1학기 중간고사</p><p class="exam__s">1학년 수학 · 선택형 18 · 서술형 4</p><div class="exam__lines"><span class="mg-line" style="--t:1s"></span><span class="mg-line" style="--t:1.15s"></span><span class="mg-line" style="--t:1.3s"></span><span class="mg-line" style="--t:1.45s"></span></div></div></div>
@@ -457,5 +458,6 @@
 <!-- footer:end -->
 
 <script src="app.js" defer></script>
+<script type="module" src="scene3d.js"></script>
 </body>
 </html>
