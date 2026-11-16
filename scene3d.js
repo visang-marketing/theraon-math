@@ -187,34 +187,35 @@ function ineq(host) {
   const P = makePaper({}); st.scene.add(P.group); underSheets(st.scene, 3.2, 4.2, [[0.48, 0.92, 0.09, 0xeeeae2], [0.16, 1.0, -0.06, 0xe6e2da]]);
   contact(st.scene, 4.6, 5.6, 0.35, 0.95, -0.05, 0.4);
   const g = P.ctx; g.font = `128px ${HAND}`;
-  const L2 = '∴ ', MISS = 'x > −3', mx = 114 + g.measureText(L2).width, mw = g.measureText(MISS).width;
+  const L2 = '∴ ', MISS = 'x = 4', mx = 114 + g.measureText(L2).width, mw = g.measureText(MISS).width;
   const S = [
     { t0: 1.45, t1: 2.45, pts: ellipsePts(mx + mw / 2, 650, mw / 2 + 44, 82), w: 11 },
     { t0: 2.75, t1: 3.0, pts: line(785, 270, 915, 400), w: 11 },
     { t0: 3.15, t1: 3.42, pts: line(915, 270, 785, 400), w: 11 },
-    { t0: 3.6, t1: 4.3, type: 'text', text: '부호 방향!', x: 560, y: 850, size: 86, font: `86px ${HAND}`, width: 330 },
+    { t0: 3.6, t1: 4.4, type: 'text', text: 'x = 0 은?', x: 330, y: 820, size: 104, font: `104px ${HAND}`, width: 330 },
   ];
   const pen = makePen(); st.scene.add(pen); st.done = 5.2;
   st.frames.push((t, it) => {
     settle(P.group, t, 0.3, 0.9, -0.05);
     P.redraw(S.map(s => inkProgress(s, t).toFixed(2)).join(), (g, CW) => {
-      sheetHead(g, CW, '2학기 중간고사 · 수학', '중2 ○반 ○번');
-      txt(g, '4. 부등식 −2x + 1 > 7 을 푸시오.', 90, 262, `700 48px ${SANS}`, '#1f1f1f');
-      txt(g, '−2x > 6', 100, 500, `128px ${HAND}`, '#2B3A8C'); txt(g, L2 + MISS, 114, 690, `128px ${HAND}`, '#2B3A8C');
+      sheetHead(g, CW, '1학기 기말고사 · 수학', '중3 ○반 ○번');
+      txt(g, '4. 이차방정식 x² = 4x 를 푸시오.', 90, 262, `700 48px ${SANS}`, '#1f1f1f');
+      txt(g, 'x² ÷ x = 4x ÷ x', 100, 500, `116px ${HAND}`, '#2B3A8C'); txt(g, L2 + MISS, 114, 690, `128px ${HAND}`, '#2B3A8C');
       g.strokeStyle = 'rgba(0,0,0,.08)'; g.lineWidth = 2; for (let y = 930; y < 1290; y += 96) { g.beginPath(); g.moveTo(90, y); g.lineTo(CW - 90, y); g.stroke(); }
       drawInk(g, S, t);
     });
-    animatePen(pen, penPose(P, S, t, V(2.0, 1.1, 1.9), V(1.25, 0.55, 1.35)), t, it);
+    animatePen(pen, penPose(P, S, t, V(3.2, 2.2, -1.2), V(1.25, 0.55, 1.35)), t, it);
   });
 }
 
 /* ================= 2. 진도는 쌓이는데 점수 선은 그대로 ================= */
 function chart(host) {
-  const st = stage(host, { desk: 'shadow', shadow: 0.2, cam: V(0.4, 8.2, 9.6), look: V(0.2, 0, -0.7), ground: 0xbfc5c2, hemiI: 0.6, env: 0.5, exposure: 1.05, keyI: 200 });
-  const P = makePaper({ w: 3.3, h: 2.6, cw: 1024, curl: 0.12 }); st.scene.add(P.group); contact(st.scene, 4.4, 3.6, -0.55, 1.15, 0, 0.25);
+  const st = stage(host, { desk: 'shadow', shadow: 0.2, cam: V(0.4, 8.2, 9.6), look: V(0.2, 0, -0.7), ground: 0xbfc5c2, hemiI: 0.6, env: 0.5, exposure: 1.05, keyI: 200,
+    frame: (cam, st) => { const n = cam.aspect < 0.8; st.cam = n ? V(-0.3, 8.6, 11.6) : V(0.1, 8.2, 9.6); st.look = n ? V(-0.3, 0, 1.25) : V(-0.05, 0, -0.65); } });
+  const P = makePaper({ w: 3.9, h: 3.0, cw: 1024, curl: 0.1 }); st.scene.add(P.group); contact(st.scene, 5.0, 4.0, -0.4, 1.15, 0, 0.25);
   // 점수 선(파란 잉크)이 왼쪽부터 그려짐, 거의 평평
-  const pts = [[120, 470], [330, 448], [540, 462], [750, 440], [930, 452]];
-  const scoreLine = { t0: 1.2, t1: 2.6, color: '#2B3A8C', w: 10, pts: p => { const f = p * (pts.length - 1), i = Math.min(pts.length - 2, Math.floor(f)), r = f - i; return [mix(pts[i][0], pts[i + 1][0], r), mix(pts[i][1], pts[i + 1][1], r)]; } };
+  const pts = [[150, 430], [330, 412], [510, 426], [690, 404], [870, 418]];
+  const scoreLine = { t0: 1.2, t1: 2.6, color: '#1f2f6e', w: 16, pts: p => { const f = p * (pts.length - 1), i = Math.min(pts.length - 2, Math.floor(f)), r = f - i; return [mix(pts[i][0], pts[i + 1][0], r), mix(pts[i][1], pts[i + 1][1], r)]; } };
   // 진도 = 책 더미(1학기 → 2학기, 계속 쌓임)
   const colors = [0x1f4d3a, 0xd9cfb8, 0x2e9e6a, 0xc4232d, 0x284b8f, 0xe8c45a];
   const books = colors.map((c, i) => {
@@ -226,18 +227,19 @@ function chart(host) {
   const tag = (() => { const c = document.createElement('canvas'); c.width = 256; c.height = 112; const g = c.getContext('2d'); g.fillStyle = '#1f4d3a'; g.beginPath(); g.roundRect(4, 4, 248, 104, 20); g.fill(); g.fillStyle = '#FFE27A'; g.font = `700 60px ${SANS}`; g.textAlign = 'center'; g.fillText('진도', 128, 76); const m = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 0.35), new THREE.MeshStandardMaterial({ map: new THREE.CanvasTexture(c), transparent: true, roughness: 0.6 })); m.material.map.colorSpace = THREE.SRGBColorSpace; st.scene.add(m); return m; })();
   st.done = 4.8;
   st.frames.push((t, it) => {
-    settle(P.group, t, -0.55, 1.15, 0.04, 0.9, 0.8);
+    settle(P.group, t, -0.4, 1.15, 0.03, 0.9, 0.8);
     P.redraw(inkProgress(scoreLine, t).toFixed(2), (g, CW, CH) => {
-      g.strokeStyle = 'rgba(31,77,58,.13)'; g.lineWidth = 2; for (let x = 60; x < CW; x += 64) { g.beginPath(); g.moveTo(x, 60); g.lineTo(x, CH - 120); g.stroke(); } for (let y = 60; y < CH - 110; y += 64) { g.beginPath(); g.moveTo(60, y); g.lineTo(CW - 60, y); g.stroke(); }
-      txt(g, '점수', 70, 120, `700 44px ${SANS}`, '#2B3A8C');
-      ['1학기 중간', '기말', '2학기'].forEach((s, i) => { g.textAlign = 'center'; txt(g, s, [130, 540, 920][i], CH - 60, `500 38px ${SANS}`, '#666'); }); g.textAlign = 'left';
+      g.strokeStyle = 'rgba(31,77,58,.12)'; g.lineWidth = 2; for (let x = 90; x < CW - 60; x += 90) { g.beginPath(); g.moveTo(x, 150); g.lineTo(x, CH - 150); g.stroke(); } for (let y = 150; y < CH - 140; y += 90) { g.beginPath(); g.moveTo(90, y); g.lineTo(CW - 70, y); g.stroke(); }
+      g.strokeStyle = '#333'; g.lineWidth = 5; g.beginPath(); g.moveTo(90, 150); g.lineTo(90, CH - 150); g.lineTo(CW - 70, CH - 150); g.stroke();
+      txt(g, '수학 점수', 90, 110, `800 56px ${SANS}`, '#1f2f6e');
+      ['1학기 중간', '기말', '2학기 중간', '기말'].forEach((s, i) => { g.textAlign = 'center'; txt(g, s, [150, 390, 630, 870][i], CH - 90, `600 40px ${SANS}`, '#555'); }); g.textAlign = 'left';
       drawInk(g, [scoreLine], t);
-      const p = inkProgress(scoreLine, t); pts.forEach(([x, y], i) => { if (p >= i / (pts.length - 1) - 0.001) { g.fillStyle = '#fff'; g.strokeStyle = '#2B3A8C'; g.lineWidth = 8; g.beginPath(); g.arc(x, y, 16, 0, 7); g.fill(); g.stroke(); } });
-      if (p >= 1) txt(g, '그대로…', 780, 560, `80px ${HAND}`, '#D6303A');
+      const p = inkProgress(scoreLine, t); pts.forEach(([x, y], i) => { if (p >= i / (pts.length - 1) - 0.001) { g.fillStyle = '#fff'; g.strokeStyle = '#1f2f6e'; g.lineWidth = 10; g.beginPath(); g.arc(x, y, 22, 0, 7); g.fill(); g.stroke(); } });
+      if (p >= 1) { txt(g, '제자리…', 560, 600, `120px ${HAND}`, '#D6303A'); }
     });
-    books.forEach((b, i) => { const d = ease(clamp((t - 0.6 - i * 0.32) / 0.55)); b.position.set(1.75 + Math.sin(i * 2.1) * 0.06, 0.1 + i * 0.205 + 1.6 * (1 - d), 0.55 + Math.cos(i * 1.7) * 0.05); b.rotation.y = 0.35 + Math.sin(i * 1.3) * 0.12 + 0.5 * (1 - d); b.visible = d > 0; });
+    books.forEach((b, i) => { const d = ease(clamp((t - 0.6 - i * 0.32) / 0.55)); b.position.set(1.8 + Math.sin(i * 2.1) * 0.06, 0.1 + i * 0.205 + 1.6 * (1 - d), 0.0 + Math.cos(i * 1.7) * 0.05); b.rotation.y = 0.35 + Math.sin(i * 1.3) * 0.12 + 0.5 * (1 - d); b.visible = d > 0; });
     const top = ease(clamp((t - 0.6 - colors.length * 0.32) / 0.5));
-    tag.position.set(1.75, 0.1 + colors.length * 0.205 + 0.35 + 0.4 * (1 - top), 0.55); tag.lookAt(st.camera.position); tag.visible = top > 0; tag.position.y += Math.sin(it * 1.6) * 0.04 * top;
+    tag.position.set(1.8, 0.1 + colors.length * 0.205 + 0.35 + 0.4 * (1 - top), 0.0); tag.lookAt(st.camera.position); tag.visible = top > 0; tag.position.y += Math.sin(it * 1.6) * 0.04 * top;
   });
 }
 
@@ -248,7 +250,7 @@ function essay(host) {
   // 고무 도장: 나무 손잡이 + 검은 몸체 + 빨간 고무
   const stamp = new THREE.Group();
   const wood = new THREE.MeshPhysicalMaterial({ color: 0x8a5a36, roughness: 0.45, clearcoat: 0.6, clearcoatRoughness: 0.3 });
-  const knob = new THREE.Mesh(new THREE.LatheGeometry([[0, 1.3], [0.2, 1.28], [0.27, 1.15], [0.2, 0.98], [0.12, 0.85], [0.13, 0.55], [0.2, 0.5], [0, 0.5]].map(([r, y]) => new THREE.Vector2(r, y)), 40), wood);
+  const knob = new THREE.Mesh(new THREE.LatheGeometry([[0, 0.5], [0.2, 0.5], [0.13, 0.55], [0.12, 0.85], [0.2, 0.98], [0.27, 1.15], [0.2, 1.28], [0, 1.3]].map(([r, y]) => new THREE.Vector2(r, y)), 40), wood);
   const base = new THREE.Mesh(new RoundedBoxGeometry(0.95, 0.28, 0.62, 4, 0.06), new THREE.MeshStandardMaterial({ color: 0x1d1d1d, roughness: 0.5 })); base.position.y = 0.36;
   const rubber = new THREE.Mesh(new RoundedBoxGeometry(0.88, 0.1, 0.55, 3, 0.03), new THREE.MeshStandardMaterial({ color: 0xb3262e, roughness: 0.7 })); rubber.position.y = 0.2;
   [knob, base, rubber].forEach(m => { m.castShadow = true; stamp.add(m); }); st.scene.add(stamp);
@@ -259,19 +261,20 @@ function essay(host) {
     const pressed = t >= press;
     P.redraw((pressed ? 1 : 0) + S.map(s => inkProgress(s, t).toFixed(2)).join(), (g, CW) => {
       g.fillStyle = '#1f1f1f'; g.beginPath(); g.roundRect(90, 70, 190, 64, 12); g.fill(); txt(g, '서술형 2', 112, 116, `700 38px ${SANS}`, '#fff');
-      txt(g, '연립방정식 x + y = 5, 2x − y = 4의', 90, 230, `700 44px ${SANS}`, '#1f1f1f'); txt(g, '해를 구하시오. (풀이 과정을 쓰시오)', 90, 292, `700 44px ${SANS}`, '#1f1f1f');
+      txt(g, '이차방정식 x² − 6x + 4 = 0 의 해를', 90, 230, `700 46px ${SANS}`, '#1f1f1f'); txt(g, '구하시오. (풀이 과정을 쓰시오)', 90, 294, `700 46px ${SANS}`, '#1f1f1f');
       g.strokeStyle = 'rgba(0,0,0,.1)'; g.lineWidth = 2; for (let y = 520; y < 1060; y += 96) { g.beginPath(); g.moveTo(90, y); g.lineTo(CW - 90, y); g.stroke(); }
-      txt(g, '답: x = 3, y = 2', 100, 470, `120px ${HAND}`, '#2B3A8C');
+      txt(g, '답: x = 3 ± √5', 100, 470, `124px ${HAND}`, '#2B3A8C');
       if (pressed) { g.save(); g.translate(790, 600); g.rotate(-0.18); g.strokeStyle = 'rgba(200,35,45,.88)'; g.lineWidth = 12; g.beginPath(); g.ellipse(0, 0, 150, 120, 0, 0, 7); g.stroke(); g.fillStyle = 'rgba(200,35,45,.9)'; g.font = `800 150px ${SANS}`; g.textAlign = 'center'; g.fillText('−3', 0, 52); g.restore();
         g.globalCompositeOperation = 'destination-out'; for (let i = 0; i < 260; i++) { g.fillStyle = `rgba(0,0,0,${Math.random() * .5})`; g.fillRect(640 + Math.random() * 300, 470 + Math.random() * 260, 3 + Math.random() * 6, 2 + Math.random() * 4); } g.globalCompositeOperation = 'source-over'; }
       drawInk(g, S, t);
     });
     // 도장: 위에서 내려와 꾹 → 들림 → 옆으로 비킴
     const at = P.world(790, 600); const down = clamp((t - (press - 0.5)) / 0.5), up = clamp((t - press - 0.12) / 0.5), away = clamp((t - press - 0.7) / 0.7);
-    stamp.position.set(at.x + 1.6 * ease(away), mix(2.2, 0, Math.pow(down, 2.2)) + 0.9 * ease(up) - 0.05 * Math.sin(clamp((t - press) / 0.12) * Math.PI) + Math.sin(it * 1.2) * 0.04 * away, at.z - 0.5 * ease(away));
+    const lift = 0.9 * ease(up) * (1 - ease(clamp((t - press - 0.9) / 0.6)));
+    stamp.position.set(at.x + 1.15 * ease(away), mix(2.2, 0, Math.pow(down, 2.2)) + lift - 0.05 * Math.sin(clamp((t - press) / 0.12) * Math.PI), at.z + 1.0 * ease(away));
     stamp.rotation.z = -0.18 + 0.2 * ease(away); stamp.rotation.x = 0.06 * (1 - down);
     stamp.scale.y = 1 - 0.06 * Math.sin(clamp((t - press) / 0.14) * Math.PI);
-    animatePen(pen, penPose(P, S, t, V(2.4, 1.3, 2.4), V(1.3, 0.55, 1.45)), t, it);
+    animatePen(pen, penPose(P, S, t, V(3.2, 2.2, -1.2), V(1.55, 0.55, -0.35)), t, it);
   });
 }
 
@@ -280,10 +283,10 @@ function calc(host) {
   const st = stage(host, { desk: 'shadow', shadow: 0.22, cam: V(0.5, 8.6, 9.4), look: V(0.3, 0, -0.9), ground: 0xc8d9cf, hemiI: 0.6, env: 0.5, keyI: 210 });
   const P = makePaper({ curl: 0.18, warm: 3 }); st.scene.add(P.group); contact(st.scene, 4.6, 5.6, 0.35, 0.95, -0.04, 0.28);
   underSheets(st.scene, 3.2, 4.2, [[0.5, 0.95, 0.08, 0xf1ede4]]);
-  const g = P.ctx; g.font = `120px ${HAND}`; const pre = '= −6a', mx = 100 + g.measureText(pre).width;
+  const g = P.ctx; g.font = `124px ${HAND}`; const pre = '= ', mx = 100 + g.measureText(pre).width, mw2 = g.measureText('√26').width;
   const S = [
-    { t0: 1.45, t1: 2.3, pts: ellipsePts(mx + 14, 470, 68, 78), w: 10 },
-    { t0: 2.6, t1: 3.5, type: 'text', text: '지수끼리 더하기 → a⁵', x: 300, y: 690, size: 80, font: `80px ${HAND}`, width: 560 },
+    { t0: 1.45, t1: 2.3, pts: ellipsePts(mx + mw2 / 2, 482, mw2 / 2 + 40, 80), w: 10 },
+    { t0: 2.6, t1: 3.6, type: 'text', text: '√2 로 묶기 → 5√2', x: 120, y: 720, size: 112, font: `112px ${HAND}`, width: 560 },
   ];
   const pen = makePen(); st.scene.add(pen); st.done = 4.6;
   st.frames.push((t, it) => {
@@ -292,11 +295,11 @@ function calc(host) {
       g.strokeStyle = 'rgba(46,158,106,.22)'; g.lineWidth = 2; for (let y = 180; y < 1300; y += 84) { g.beginPath(); g.moveTo(60, y); g.lineTo(CW - 60, y); g.stroke(); }
       g.strokeStyle = 'rgba(229,72,77,.35)'; g.beginPath(); g.moveTo(80, 60); g.lineTo(80, 1300); g.stroke();
       txt(g, '연습', 110, 130, `700 42px ${SANS}`, '#1f4d3a');
-      txt(g, '(−3a²) × 2a³', 100, 330, `120px ${HAND}`, '#2B3A8C');
-      txt(g, pre, 100, 520, `120px ${HAND}`, '#2B3A8C'); txt(g, '6', mx, 470, `80px ${HAND}`, '#2B3A8C');
+      txt(g, '√8 + √18', 100, 330, `124px ${HAND}`, '#2B3A8C');
+      txt(g, pre + '√26', 100, 520, `124px ${HAND}`, '#2B3A8C');
       drawInk(g, S, t);
     });
-    animatePen(pen, penPose(P, S, t, V(2.1, 1.1, 2.0), V(1.3, 0.55, 1.4)), t, it);
+    animatePen(pen, penPose(P, S, t, V(3.2, 2.2, -1.2), V(1.3, 0.55, 1.4)), t, it);
   });
 }
 
@@ -325,38 +328,34 @@ function exams(host) {
   });
 }
 
-/* ================= 첫 화면: 중2 시험지 + 빨간 펜 + 포스트잇 ================= */
+/* ================= 첫 화면: 중3 시험지 + 빨간 펜 ================= */
 function hero(host) {
   const st = stage(host, {
     desk: 'shadow', shadow: 0.2, ground: 0xc8d9cf, hemiI: 0.65, env: 0.55, exposure: 1.05, keyI: 230, keyPos: V(-4.5, 10, 3.5),
     cam: V(-0.2, 9.5, 8.2), look: V(-0.2, 0, -0.3), fov: 26,
-    frame: (cam, st) => { const wide = cam.aspect > 1.8; st.cam = wide ? V(1.6, 7.6, 7.4) : V(0.2, 9.8, 8.6); st.look = wide ? V(1.6, 0, -0.2) : V(0.2, 0, -0.4); cam.fov = wide ? 24 : 30; },
+    frame: (cam, st) => { const wide = cam.aspect > 1.8, narrow = cam.aspect < 1.4; st.cam = wide ? V(1.6, 7.6, 7.4) : narrow ? V(-0.25, 7.4, 6.1) : V(0.2, 9.8, 8.6); st.look = wide ? V(1.6, 0, -0.2) : narrow ? V(-0.25, 0, -0.15) : V(0.2, 0, -0.4); cam.fov = wide ? 24 : 30; },
   });
   const P = makePaper({ w: 4.4, h: 3.9, cw: 1280, curl: 0.07 }); st.scene.add(P.group); contact(st.scene, 6.2, 5.4, -0.3, 0.2, 0, 0.3);
-  const g = P.ctx; g.font = `130px ${HAND}`; const pre = '= 6x − 3y − 2x ', mx = 100 + g.measureText(pre).width, mw = g.measureText('− 6y').width;
+  const g = P.ctx; g.font = `124px ${HAND}`; const pre = '= ', mx = 100 + g.measureText(pre).width, mw = g.measureText('4x² − 9').width;
   const S = [
     { t0: 1.6, t1: 2.5, pts: ellipsePts(mx + mw / 2, 520, mw / 2 + 40, 78), w: 11 },
-    { t0: 2.75, t1: 3.7, type: 'text', text: '여기, 부호에서 막혔네', x: 520, y: 900, size: 90, font: `90px ${HAND}`, width: 650 },
+    { t0: 2.75, t1: 3.7, type: 'text', text: '−12x 는 어디 갔지?', x: 560, y: 900, size: 90, font: `90px ${HAND}`, width: 620 },
     { t0: 3.95, t1: 4.15, pts: line(1080, 330, 1020, 440), w: 11 },
     { t0: 4.15, t1: 4.35, pts: line(1020, 440, 1140, 440), w: 11 },
     { t0: 4.35, t1: 4.55, pts: line(1140, 440, 1080, 330), w: 11 },
   ];
   const pen = makePen(); st.scene.add(pen);
-  // 포스트잇
-  const N = makePaper({ w: 1.5, h: 1.5, cw: 512, curl: 0.02, tint: 0xffe27a });
-  N.redraw('n', (g) => { g.fillStyle = 'rgba(255,226,122,.92)'; g.fillRect(0, 0, 512, 512); txt(g, '"엄마, 이거', 40, 210, `104px ${HAND}`, '#4A3B00'); txt(g, '다 배운 건데…"', 40, 350, `104px ${HAND}`, '#4A3B00'); });
-  st.scene.add(N.group); st.done = 5.4;
+  st.done = 5.4;
   st.frames.push((t, it) => {
     settle(P.group, t, -0.3, 0.2, -0.045, 1.0, 0.9);
-    const nd = ease(clamp((t - 0.6) / 0.7)); N.group.position.set(2.3, 0.14 + 0.8 * (1 - nd) + Math.sin(it * 0.9) * 0.01, 1.75); N.group.rotation.z = 0.14 - 0.5 * (1 - nd); N.group.rotation.x = -Math.PI / 2 + 0.2 * (1 - nd);
     P.redraw(S.map(s => inkProgress(s, t).toFixed(2)).join(), (g, CW) => {
-      sheetHead(g, CW, '2학기 중간고사 · 수학', '중2 ○반 ○번', 40);
-      txt(g, '5. 다음 식을 간단히 하시오.', 90, 250, `700 52px ${SANS}`, '#1f1f1f');
-      txt(g, '3(2x − y) − 2(x − 3y)', 90, 370, `600 64px ${SANS}`, '#1f1f1f');
-      txt(g, pre + '− 6y', 100, 560, `130px ${HAND}`, '#2B3A8C'); txt(g, '= 4x − 9y', 100, 730, `130px ${HAND}`, '#2B3A8C');
+      sheetHead(g, CW, '1학기 기말고사 · 수학', '중3 ○반 ○번', 40);
+      txt(g, '5. 다음 식을 전개하여 간단히 하시오.', 90, 250, `700 52px ${SANS}`, '#1f1f1f');
+      txt(g, '(2x − 3)² − (x + 1)(x − 1)', 90, 370, `600 64px ${SANS}`, '#1f1f1f');
+      txt(g, pre + '4x² − 9 − x² + 1', 100, 560, `124px ${HAND}`, '#2B3A8C'); txt(g, '= 3x² − 8', 100, 730, `124px ${HAND}`, '#2B3A8C');
       drawInk(g, S, t);
     });
-    animatePen(pen, penPose(P, S, t, V(3.4, 1.4, 2.0), V(2.35, 0.6, 1.25)), t, it);
+    animatePen(pen, penPose(P, S, t, V(4.4, 2.4, -1.4), V(2.35, 0.6, 1.25)), t, it);
   });
 }
 

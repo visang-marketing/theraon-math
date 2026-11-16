@@ -988,11 +988,12 @@ p, li, dd, .sec-desc { text-wrap: pretty; }
   .contact-wrap { display: flex; flex-direction: column; }
   .contact-form { order: -1; }                                           /* H3 */
   .about-panel { display: flex; flex-direction: column; }
-  .about-panel__photo { order: -1; max-width: none; }                     /* D3·H10 */
+  .about-panel__photo { order: -1; max-width: none; width: 100%; }                     /* D3·H10 */
   .photo-slot { aspect-ratio: 4 / 3; }
   .p-head + .m-section .sec-title { font-size: 26px; }
   .sol-card { aspect-ratio: auto; height: 340px; }                       /* D7 */
-  .sol-card--dark { height: 380px; }
+  .sol-card--dark, .sol-card--light { height: 380px; }
+  .sol-card--light .retry li { padding: 7px 16px; }
   .fan__card { transform: translateX(calc(var(--x) * var(--p) * 54px)) rotate(calc(var(--rot) * var(--p) * .8)); }
   .epi { clip-path: none; width: auto; margin: 0 var(--gut); border-radius: var(--r); height: 520px; }
   .epi__img { transform: none; }
